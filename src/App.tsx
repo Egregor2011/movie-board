@@ -1,30 +1,22 @@
-import React, { Component} from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Header from "./components/Header";
-import Home from "./pages/Home";
-import "./global.css"
+import { FC } from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Header from './components/Header';
+import Home from './pages/Home';
+import './global.css';
+import Movie from './pages/Movie';
 
-/**
- * The starting page for your App
- */
-
-class App extends Component{
-  render(){
-    return(
-      <>
-        <BrowserRouter>
-          <Header />
-          <main>
-            <section>
-                <Routes>
-                  <Route path={"/"} element={<Home />} />
-                </Routes>
-            </section>
-          </main>
-        </BrowserRouter>
-      </>
-    );
-  }
-}
+const App: FC = () => (
+  <BrowserRouter>
+    <Header />
+    <main>
+      <section>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/movies/:id" element={<Movie />} />
+        </Routes>
+      </section>
+    </main>
+  </BrowserRouter>
+);
 
 export default App;
