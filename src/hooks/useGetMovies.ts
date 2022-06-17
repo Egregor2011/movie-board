@@ -16,12 +16,12 @@ const useGetMovies = (): {
 
   useEffect(() => {
     try {
-      getData(moviesUrl).then(({ results }) => setData(results));
+      getData(moviesUrl)
+        .then(({ results }) => setData(results))
+        .finally(() => setLoading(false));
     } catch (err) {
       setError(err);
-      console.log({ err });
     }
-    setLoading(false);
   }, []);
 
   const filteredData = data.filter(({ title }) =>
