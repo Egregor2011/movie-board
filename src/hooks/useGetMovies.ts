@@ -15,13 +15,10 @@ const useGetMovies = (): {
   const [query, setQuery] = useState<string>('');
 
   useEffect(() => {
-    try {
-      getData(moviesUrl)
-        .then(({ results }) => setData(results))
-        .finally(() => setLoading(false));
-    } catch (err) {
-      setError(err);
-    }
+    getData(moviesUrl)
+      .then(({ results }) => setData(results))
+      .catch(setError)
+      .finally(() => setLoading(false));
   }, []);
 
   const filteredData = data.filter(({ title }) =>
